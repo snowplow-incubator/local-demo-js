@@ -1,0 +1,42 @@
+<html>
+  <link rel="stylesheet" type="text/css" href="viewer.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0m300;0,400;0,500;0,900;1,700&display=swap"
+    rel="stylesheet"
+  />
+  <title>Viewer</title>
+  <body>
+    <header>
+      <h1>Data Viewer</h1>
+    </header>
+    <div class="container">
+      <div class="stats">
+        <div>
+          Total
+          <div class="total"></div>
+        </div>
+        <div>
+          Good
+          <div class="good"></div>
+        </div>
+        <div>
+          Bad
+          <div class="bad"></div>
+        </div>
+      </div>
+
+      <button class="clear-button">Clear</button>
+      <table class="good">
+        <thead>
+          <tr>
+            <td>Time</td>
+            <td>Data</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+  <script type="text/javascript" src="jsonview.js"></script>
+  <script type="text/javascript" src="viewer.js"></script>
+</html>
