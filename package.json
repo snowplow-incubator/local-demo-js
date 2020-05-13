@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "micro": "./spinup_micro.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +20,6 @@
   },
   "homepage": "https://github.com/snowplow-incubator/local-demo-js#readme",
   "dependencies": {
+    "shelljs": "^0.8.4"
   }
 }
