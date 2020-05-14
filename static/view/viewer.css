@@ -1,0 +1,139 @@
+html {
+  font-family: "Rubik", Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 0;
+  margin: 0;
+}
+
+.stats {
+  margin-top: 1em;
+  display: flex;
+}
+
+.stats > div {
+  color: #fff;
+  flex: 1;
+  text-align: center;
+  margin: 0.2em;
+  background-color: #6638b8;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background-color: #6638b8;
+  background-image: url(header-background.svg);
+  background-repeat: no-repeat;
+  min-height: 120px;
+  padding-left: 1em;
+}
+h1 {
+  font-weight: 300;
+  color: #fff;
+}
+.container {
+  margin: 0 auto 0 auto;
+  max-width: 900px;
+}
+body {
+  background-color: #f7f7fa;
+  padding: 0;
+  margin: 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px 0px;
+  overflow: hidden;
+}
+thead {
+  text-align: center;
+  font-weight: bold;
+}
+td {
+  padding: 0.5em;
+}
+tr {
+  border-bottom: solid rgba(0, 0, 0, 0.16) 1px;
+}
+tr:nth-child(even) {
+  background: #ccc;
+}
+tr:nth-child(odd) {
+  background: white;
+}
+
+.line {
+  margin: 4px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.caret-icon {
+  width: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.empty-icon {
+  width: 18px;
+}
+
+.json-type {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.json-key {
+  color: #444;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.json-index {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.json-value {
+  margin-left: 8px;
+}
+
+.json-number {
+  color: #f9ae58;
+}
+
+.json-boolean {
+  color: #ec5f66;
+}
+
+.json-string {
+  color: #86b25c;
+}
+
+.json-size {
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.hide {
+  display: none;
+}
+
+.fas {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.fa-caret-down {
+  border-width: 6px 5px 0 5px;
+  border-color: #808080 transparent;
+}
+
+.fa-caret-right {
+  border-width: 5px 0 5px 6px;
+  border-color: transparent transparent transparent #808080;
+}
