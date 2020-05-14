@@ -7,7 +7,9 @@
         ...event.event,
         parameters: {
           ...event.event.parameters,
-          cx: JSON.parse(atob(event.event.parameters.cx)),
+          cx:
+            event.event.parameters.cx &&
+            JSON.parse(atob(event.event.parameters.cx)),
         },
       },
     };
@@ -48,13 +50,11 @@
     }
   };
 
-  const clearData = async () => {
+  window.clearData = async () => {
     await fetch(`${BASE_URL}/micro/reset`);
     goodTBodyElement.innerHTML = "";
   };
 
   getTotals();
   setInterval(getTotals, 2000);
-
-  document.querySelector(".clear-button").addEventListener("click", clearData);
 })();
