@@ -22,8 +22,12 @@
   },
   "homepage": "https://github.com/snowplow-incubator/local-demo-js#readme",
   "dependencies": {
+    "aws-kcl": "^2.1.0",
+    "aws-sdk": "^2.676.0",
     "http-server": "^0.12.3",
     "shelljs": "^0.8.4",
+    "snowplow-analytics-sdk": "^0.3.0",
+    "socket.io": "^2.3.0",
     "ttab": "^0.6.1"
   }
 }
