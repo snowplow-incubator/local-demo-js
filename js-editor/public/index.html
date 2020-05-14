@@ -14,8 +14,7 @@ body {
   <body>
     <h2>Pageviews</h2>
     <p>Page views are tracked using the trackPageView method. This is generally part of the first Snowplow tag to fire on a particular web page. As a result, the trackPageView method is usually deployed straight after the tag that also invokes the Snowplow JavaScript (sp.js) e.g.</p>
-    <div class="snowplow-example"><pre><code>
-&lt;script type="text/javascript">
+    <div class="snowplow-example"><pre><code>&lt;script type="text/javascript">
 ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
 p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
 };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
@@ -31,11 +30,10 @@ window.plow('newTracker', 'sp', 'localhost:9090', {
 window.plow('trackPageView');
  &lt;/script>
 asdasdasd
-&lt;button onclick="javascript:window.plow('trackPageView');">sadasdasdasd&lt;/button>
-    </code></pre></div>
+&lt;button onclick="javascript:window.plow('trackPageView');">sadasdasdasd&lt;/button></code></pre></div>
     <p>Page views are tracked using the trackPageView method. This is generally part of the first Snowplow tag to fire on a particular web page. As a result, the trackPageView method is usually deployed straight after the tag that also invokes the Snowplow JavaScript (sp.js) e.g.</p>
-    <div class="snowplow-example-short"><pre><code>
-Snowplow.getTrackerUrl('localhost:9090').trackPageView()
-    </code></pre></div>
+    <div class="snowplow-example-short"><pre><code> Snowplow.getTrackerUrl('localhost:9090').trackPageView() </code></pre></div>
+    <p>Page views are tracked using the trackPageView method. This is generally part of the first Snowplow tag to fire on a particular web page. As a result, the trackPageView method is usually deployed straight after the tag that also invokes the Snowplow JavaScript (sp.js) e.g.</p>
+    <div class="snowplow-example-short"><pre><code> Snowplow.getTrackerUrl('localhost:9090').trackPageView() </code></pre></div>
   </body>
 </html>

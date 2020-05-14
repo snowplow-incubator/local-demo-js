@@ -37,8 +37,11 @@ const styles = {
     display: 'flex',
     alignItems: 'center'
   },
+  editorw: {
+  },
   editor: {
-    minHeight: '3rem',
+    paddingTop: '10px',
+    backgroundColor: '#1e1e1e',
     "&.off": {
       visibility: "hidden",
     },
@@ -128,11 +131,14 @@ function createContainer(bar, viewer) {
   container.className = cn('snowplow-example-short', classes.container)
   const editor = document.createElement("div");
   editor.className = classes.editor;
+  const editorw = document.createElement("div");
+  editorw.className = classes.editorw;
+  editorw.appendChild(editor)
   const e = document.createElement("div");
   e.className = cn('errors', classes.errors)
   const w = document.createElement("div");
   w.className = classes.w;
-  w.appendChild(editor);
+  w.appendChild(editorw);
   w.appendChild(viewer);
   container.appendChild(w);
   container.appendChild(e);
@@ -194,8 +200,8 @@ function init() {
         theme: "vs-dark",
         codeLens: false,
         minimap: { enabled: false },
-        automaticLayout: true,
         scrollBeyondLastLine: false,
+        automaticLayout: false
       });
 
       const cb = () => {
@@ -210,12 +216,6 @@ function init() {
 
       c.replaceWith(container);
       addRunner([container, () => {}])
-
-      // https://github.com/microsoft/monaco-editor/issues/794#issuecomment-583367666
-      e.onDidChangeModelDecorations(() => {
-        updateEditorHeight(); // typing
-        requestAnimationFrame(updateEditorHeight); // folding
-      });
 
       let prevHeight = 0;
 
@@ -236,6 +236,14 @@ function init() {
           e.layout();
         }
       };
+
+      // https://github.com/microsoft/monaco-editor/issues/794#issuecomment-583367666
+      e.onDidChangeModelDecorations(() => {
+        updateEditorHeight(); // typing
+        requestAnimationFrame(updateEditorHeight); // folding
+      });
+      requestAnimationFrame(updateEditorHeight)
+
     });
   });
   import("monaco-editor").then((monaco) => {
@@ -273,8 +281,8 @@ function init() {
         theme: "vs-dark",
         codeLens: false,
         minimap: { enabled: false },
-        automaticLayout: true,
         scrollBeyondLastLine: false,
+        automaticLayout: false
       });
 
       const cb = () => {
@@ -293,12 +301,6 @@ function init() {
 
       c.replaceWith(container);
       addRunner([container, () => {switchOff(); rerender() }])
-
-      // https://github.com/microsoft/monaco-editor/issues/794#issuecomment-583367666
-      e.onDidChangeModelDecorations(() => {
-        updateEditorHeight(); // typing
-        requestAnimationFrame(updateEditorHeight); // folding
-      });
 
       let prevHeight = 0;
 
@@ -319,6 +321,13 @@ function init() {
           e.layout();
         }
       };
+      // https://github.com/microsoft/monaco-editor/issues/794#issuecomment-583367666
+      e.onDidChangeModelDecorations(() => {
+        updateEditorHeight(); // typing
+        requestAnimationFrame(updateEditorHeight); // folding
+      });
+      requestAnimationFrame(updateEditorHeight)
+
     });
   });
 }
