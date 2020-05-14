@@ -20,29 +20,12 @@ function handler (req, res) {
   }
   if (req.url === '/publish' && req.method === 'POST') {
 
-    //this is what you are looking for:
-    io.sockets.emit('super event', { message: 'Newtest' });
-    //---------------------------------
-
     res.writeHead(200, {
       'Location': '/'
     });
     return res.end('');
   }
 }
-
-/*
-io.sockets.on('connection', function (socket) {
-  socket.on('publish', function (data) {
-    //if you need to emit to everyone BUT the socket who emit this use:
-    //socket.broadcast.emit('super event', data);
-
-    //emit to everyone
-    io.sockets.emit('super event', data);
-  })
-});
-
-*/
 
 server.listen(1080, function () {
   console.log('listening on http://localhost:1080');
@@ -59,14 +42,13 @@ function getData(shIterator) {
         enrichedEvent = Buffer.from(item.Data, 'base64').toString('utf-8')
         jsonEnrichedEvent = transform(enrichedEvent);
         console.log(jsonEnrichedEvent);
-        io.sockets.emit('super event', jsonEnrichedEvent);
-        io.sockets.emit('super event', 'ANOTHER TEST');
+        io.sockets.emit('snowplowEvent', jsonEnrichedEvent);
       });
 
       if (recordsResult.NextShardIterator) getData(recordsResult.NextShardIterator);
 
     }
- 
+
   });
 
 }

@@ -10,7 +10,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io.connect('/');
-      socket.on('super event', function (data) {
+      socket.on('snowplowEvent', function (data) {
         console.log(data);
       });
     </script>
