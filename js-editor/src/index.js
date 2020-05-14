@@ -83,6 +83,19 @@ document.write(unescape("%3Cscript src='https://d1fc8wv8zag5ca.cloudfront.net/2.
 </script>
 `
 
+const runners = []
+function addRunner(runner) {
+  runners.push(runner)
+}
+
+function stopRunner([_container, shutdownCb]) {
+  shutdownCb()
+}
+
+function stopAllRunners() {
+  runners.forEach(stopRunner)
+}
+
 function createBottomBar(button) {
   const bar = document.createElement("div");
   const feedback = document.createElement("div");
@@ -177,7 +190,6 @@ function init() {
         language: "javascript",
         lineNumbers: "off",
         roundedSelection: false,
-        scrollBeyondLastLine: false,
         readOnly: false,
         theme: "vs-dark",
         codeLens: false,
@@ -187,6 +199,7 @@ function init() {
       });
 
       const cb = () => {
+        stopAllRunners()
         const v = initShortFrame(i) + "<script>try {" + e.getValue() + "} catch(e) {reportError(e)}</script>"
         var blob = new Blob([v], { type: "text/html" });
         viewer.src = URL.createObjectURL(blob);
@@ -196,6 +209,7 @@ function init() {
       run.addEventListener("click", cb);
 
       c.replaceWith(container);
+      addRunner([container, () => {}])
 
       // https://github.com/microsoft/monaco-editor/issues/794#issuecomment-583367666
       e.onDidChangeModelDecorations(() => {
@@ -234,21 +248,27 @@ function init() {
       const bar = createBottomBar(run);
       const [container, editor] = createContainer(bar, viewer);
 
-      let viewing = false;
-      const toggleViewing = () => {
-        viewing = !viewing;
+      let viewing = false
+      const switchOn = () => {
+        viewing = true;
+      };
 
+      const switchOff = () => {
+        viewer.src = 'about:blank'
+        viewing = false
+      }
+
+      const rerender = () => {
         viewer.className = cn(classes.viewerFrame, { on: viewing });
         editor.className = cn(classes.editor, { off: viewing });
         run.className = cn(classes.runButton, { viewing });
-      };
+      }
 
       const e = monaco.editor.create(editor, {
         value: inner,
         language: "html",
         lineNumbers: "off",
         roundedSelection: false,
-        scrollBeyondLastLine: false,
         readOnly: false,
         theme: "vs-dark",
         codeLens: false,
@@ -258,14 +278,21 @@ function init() {
       });
 
       const cb = () => {
+        if (viewing) {
+          switchOff()
+        } else {
+          stopAllRunners()
+          switchOn()
+        }
+        rerender()
         var blob = new Blob([e.getValue()], { type: "text/html" });
         viewer.src = URL.createObjectURL(blob);
-        toggleViewing();
       };
 
       run.addEventListener("click", cb);
 
       c.replaceWith(container);
+      addRunner([container, () => {switchOff(); rerender() }])
 
       // https://github.com/microsoft/monaco-editor/issues/794#issuecomment-583367666
       e.onDidChangeModelDecorations(() => {
