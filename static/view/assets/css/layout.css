@@ -1,0 +1,39 @@
+
+body{
+    padding-bottom:30vh;
+}
+
+.wrap{
+    width: 1200px;
+    position:relative;
+    margin:0px auto;
+    z-index:2;
+}
+
+.full{
+    width: 100%;
+}
+
+.half{
+    width: 50%;
+}
+
+
+.split-sections{
+    display:flex;
+    flex-flow:row;
+    justify-content: space-between;
+}
+
+
+
+.hex-3-bg{
+    width: 1150px;
+    height: 1300px;
+    display:block;
+    position:absolute;
+    right:0px;
+    top:0px;
+    background:url("../img/global/3hex-bg.svg") no-repeat;
+    z-index:1;
+}

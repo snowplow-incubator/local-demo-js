@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="104px" height="106px" viewBox="0 0 104 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>Cirle-Arrow-Right</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="30" cy="30" r="30"></circle>
+        <filter x="-59.2%" y="-55.8%" width="218.3%" height="218.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.400022645   0 0 0 0 0.400022645   0 0 0 0 0.400022645  0 0 0 0.0594405594 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Hackathon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Snowplow-JS-Demo-Pipeline-data" transform="translate(-1440.000000, -1619.000000)">
+            <g id="Group-11-Copy" transform="translate(1302.000000, 1640.000000)">
+                <g id="Cirle-Arrow-Right" transform="translate(160.000000, 0.000000)">
+                    <g id="Arrow">
+                        <g id="Oval">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <path d="M40.7408253,29.2360804 L35.2338024,22.3153569 C35.0173807,22.0433779 34.7019392,21.937158 34.4063017,22.0367092 C34.1106642,22.1362604 33.879745,22.4264585 33.8005292,22.7979888 C33.7213133,23.169519 33.8058356,23.565937 34.0222573,23.837916 L38.0699192,28.9159969 L20.8604723,28.9159969 C20.3852466,28.9159969 20,29.4001396 20,29.99736 C20,30.5945803 20.3852466,31.078723 20.8604723,31.078723 L38.0699192,31.078723 L34.0360249,36.1568039 C33.8745993,36.3581964 33.7838123,36.6322285 33.7838123,36.9180835 C33.7838123,37.2039385 33.8745993,37.4779706 34.0360249,37.6793631 C34.1953513,37.884399 34.4137538,38 34.6417974,38 C34.869841,38 35.0882434,37.884399 35.2475699,37.6793631 L40.7545929,30.7586396 C40.9142111,30.5549507 41.0025297,30.2796186 41,29.9937578 C40.99736,29.7078971 40.9040855,29.4351583 40.7408253,29.2360804 Z" id="Path" fill="#5F47B7" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
