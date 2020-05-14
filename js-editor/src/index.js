@@ -6,10 +6,21 @@ jss.setup(preset());
 
 const styles = {
   runButton: {
-    padding: ".5em",
     fontSize: "1rem",
     marginRight: "0.5em",
-    "& span:before": { content: '"Run in iframe"' },
+    border: "none",
+    borderRadius: "2px",
+    color: "white",
+    cursor: "pointer",
+    display: "flex",
+    padding: 0,
+    "& span": {
+      padding: ".75em",
+      position: "relative",
+      backgroundColor: "#6638b8",
+      display: "block",
+    },
+    "& span:before": { content: '"Run example"' },
     "&.viewing span:before": {
       content: '"Back to code"',
     },
@@ -30,26 +41,25 @@ const styles = {
   },
   bottomBar: {
     padding: "1rem 0",
-    display: 'flex',
-    alignItems: 'center'
+    display: "flex",
+    alignItems: "center",
   },
   feedback: {
-    display: 'flex',
-    alignItems: 'center'
+    display: "flex",
+    alignItems: "center",
   },
-  editorw: {
-  },
+  editorw: {},
   editor: {
-    paddingTop: '10px',
-    backgroundColor: '#1e1e1e',
+    paddingTop: "10px",
+    backgroundColor: "#1e1e1e",
     "&.off": {
       visibility: "hidden",
     },
   },
   sendEvent: {
-    marginRight: '0.5rem'
+    marginRight: "0.5rem",
   },
-  errors: {}
+  errors: {},
 };
 
 const { classes } = jss.createStyleSheet(styles).attach();
@@ -84,25 +94,25 @@ function reportError(e) {
 }
 document.write(unescape("%3Cscript src='https://d1fc8wv8zag5ca.cloudfront.net/2.10.2/sp.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
-`
+`;
 
-const runners = []
+const runners = [];
 function addRunner(runner) {
-  runners.push(runner)
+  runners.push(runner);
 }
 
 function stopRunner([_container, shutdownCb]) {
-  shutdownCb()
+  shutdownCb();
 }
 
 function stopAllRunners() {
-  runners.forEach(stopRunner)
+  runners.forEach(stopRunner);
 }
 
 function createBottomBar(button) {
   const bar = document.createElement("div");
   const feedback = document.createElement("div");
-  feedback.className = cn('feedback', classes.feedback)
+  feedback.className = cn("feedback", classes.feedback);
   bar.className = classes.bottomBar;
   bar.appendChild(button);
   bar.appendChild(feedback);
@@ -128,14 +138,14 @@ function createViewer() {
 
 function createContainer(bar, viewer) {
   const container = document.createElement("div");
-  container.className = cn('snowplow-example-short', classes.container)
+  container.className = cn("snowplow-example-short", classes.container);
   const editor = document.createElement("div");
   editor.className = classes.editor;
   const editorw = document.createElement("div");
   editorw.className = classes.editorw;
-  editorw.appendChild(editor)
+  editorw.appendChild(editor);
   const e = document.createElement("div");
-  e.className = cn('errors', classes.errors)
+  e.className = cn("errors", classes.errors);
   const w = document.createElement("div");
   w.className = classes.w;
   w.appendChild(editorw);
@@ -148,36 +158,39 @@ function createContainer(bar, viewer) {
 
 function createSendEvent() {
   const container = document.createElement("div");
-  container.className = classes.sendEvent
-  const text = document.createTextNode('Event sent')
-  container.appendChild(text)
+  container.className = classes.sendEvent;
+  const text = document.createTextNode("Event sent");
+  container.appendChild(text);
   setTimeout(() => {
-    container.remove()
-  }, 1000)
-  return container
+    container.remove();
+  }, 1000);
+  return container;
 }
 
 function createError(e) {
   const container = document.createElement("div");
-  container.className = classes.sendEvent
-  const text = document.createTextNode(e)
-  container.appendChild(text)
-  return container
+  container.className = classes.sendEvent;
+  const text = document.createTextNode(e);
+  container.appendChild(text);
+  return container;
 }
 
-window.addEventListener("message", e => {
-  try {
-    const c = document.getElementById(`snowplow-example-short-${e.data.id}`)
-    if (e.data.error) {
-      const f = c.querySelector('.errors')
-      f.appendChild(createError(e.data.error))
-    } else {
-      const f = c.querySelector('.feedback')
-      f.appendChild(createSendEvent())
-    }
-  } catch (e) {
-  }
-}, false);
+window.addEventListener(
+  "message",
+  (e) => {
+    try {
+      const c = document.getElementById(`snowplow-example-short-${e.data.id}`);
+      if (e.data.error) {
+        const f = c.querySelector(".errors");
+        f.appendChild(createError(e.data.error));
+      } else {
+        const f = c.querySelector(".feedback");
+        f.appendChild(createSendEvent());
+      }
+    } catch (e) {}
+  },
+  false
+);
 
 function init() {
   import("monaco-editor").then((monaco) => {
@@ -189,7 +202,7 @@ function init() {
       const run = createRun();
       const bar = createBottomBar(run);
       const [container, editor] = createContainer(bar, viewer);
-      container.id = `snowplow-example-short-${i}`
+      container.id = `snowplow-example-short-${i}`;
 
       const e = monaco.editor.create(editor, {
         value: inner,
@@ -201,21 +214,25 @@ function init() {
         codeLens: false,
         minimap: { enabled: false },
         scrollBeyondLastLine: false,
-        automaticLayout: false
+        automaticLayout: false,
       });
 
       const cb = () => {
-        stopAllRunners()
-        const v = initShortFrame(i) + "<script>try {" + e.getValue() + "} catch(e) {reportError(e)}</script>"
+        stopAllRunners();
+        const v =
+          initShortFrame(i) +
+          "<script>try {" +
+          e.getValue() +
+          "} catch(e) {reportError(e)}</script>";
         var blob = new Blob([v], { type: "text/html" });
         viewer.src = URL.createObjectURL(blob);
-        container.querySelector('.errors').innerHTML = ''
+        container.querySelector(".errors").innerHTML = "";
       };
 
       run.addEventListener("click", cb);
 
       c.replaceWith(container);
-      addRunner([container, () => {}])
+      addRunner([container, () => {}]);
 
       let prevHeight = 0;
 
@@ -242,8 +259,7 @@ function init() {
         updateEditorHeight(); // typing
         requestAnimationFrame(updateEditorHeight); // folding
       });
-      requestAnimationFrame(updateEditorHeight)
-
+      requestAnimationFrame(updateEditorHeight);
     });
   });
   import("monaco-editor").then((monaco) => {
@@ -256,21 +272,21 @@ function init() {
       const bar = createBottomBar(run);
       const [container, editor] = createContainer(bar, viewer);
 
-      let viewing = false
+      let viewing = false;
       const switchOn = () => {
         viewing = true;
       };
 
       const switchOff = () => {
-        viewer.src = 'about:blank'
-        viewing = false
-      }
+        viewer.src = "about:blank";
+        viewing = false;
+      };
 
       const rerender = () => {
         viewer.className = cn(classes.viewerFrame, { on: viewing });
         editor.className = cn(classes.editor, { off: viewing });
         run.className = cn(classes.runButton, { viewing });
-      }
+      };
 
       const e = monaco.editor.create(editor, {
         value: inner,
@@ -282,17 +298,17 @@ function init() {
         codeLens: false,
         minimap: { enabled: false },
         scrollBeyondLastLine: false,
-        automaticLayout: false
+        automaticLayout: false,
       });
 
       const cb = () => {
         if (viewing) {
-          switchOff()
+          switchOff();
         } else {
-          stopAllRunners()
-          switchOn()
+          stopAllRunners();
+          switchOn();
         }
-        rerender()
+        rerender();
         var blob = new Blob([e.getValue()], { type: "text/html" });
         viewer.src = URL.createObjectURL(blob);
       };
@@ -300,7 +316,13 @@ function init() {
       run.addEventListener("click", cb);
 
       c.replaceWith(container);
-      addRunner([container, () => {switchOff(); rerender() }])
+      addRunner([
+        container,
+        () => {
+          switchOff();
+          rerender();
+        },
+      ]);
 
       let prevHeight = 0;
 
@@ -326,8 +348,7 @@ function init() {
         updateEditorHeight(); // typing
         requestAnimationFrame(updateEditorHeight); // folding
       });
-      requestAnimationFrame(updateEditorHeight)
-
+      requestAnimationFrame(updateEditorHeight);
     });
   });
 }
