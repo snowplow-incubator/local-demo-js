@@ -15,9 +15,6 @@ const styles = {
     display: "flex",
     padding: 0,
     "& span": {
-      padding: ".75em",
-      position: "relative",
-      backgroundColor: "#6638b8",
       display: "block",
     },
     "& span:before": { content: '"Run example"' },

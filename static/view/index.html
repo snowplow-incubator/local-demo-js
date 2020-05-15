@@ -52,31 +52,54 @@
       ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
       p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
       };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
-      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://d1fc8wv8zag5ca.cloudfront.net/2.10.2/sp.js","plow"));
+      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://d1fc8wv8zag5ca.cloudfront.net/2.10.2/sp.js","snowplow"));
       
-      window.plow('newTracker', 'sp', 'localhost:9090', {
+      window.snowplow('newTracker', 'sp', 'localhost:9090', {
           appId: 'my-app-id',
           contexts: {
               webPage: true
           }
       });
       
-      window.plow('trackPageView');
-       &lt;/script>
-      asdasdasd
-      &lt;button onclick="javascript:window.plow('trackPageView');">sadasdasdasd&lt;/button></code></pre>
+      window.snowplow('trackPageView');
+&lt;/script>
+&lt;h1>Your content here&lt;/h1>
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit&lt/p>
+</code></pre>
           </div>
         </article>
         <article>
           <h2 id="gotoTrackPageViews">Track Pageview</h2>
           <p>
-            Page views are tracked using the trackPageView method. This is generally
-            part of the first Snowplow tag to fire on a particular web page. As a
-            result, the trackPageView method is usually deployed straight after the
-            tag that also invokes the Snowplow JavaScript (sp.js) e.g.
+          Additionally, you can pass a function which returns an array of zero or more contexts to trackPageView. For the page view and for all subsequent page pings, the function will be called and the contexts it returns will be added to the event.
           </p>
           <div class="snowplow-example-short">
-            <pre><code> Snowplow.getTrackerUrl('localhost:9090').trackPageView() </code></pre>
+            <pre><code>
+var tracker = Snowplow.getTrackerUrl('localhost:9090')
+tracker.trackPageView(
+  // no custom title
+  null,
+
+  // The usual array of static contexts
+  [{
+    schema: 'iglu:org.schema/WebPage/jsonschema/1-0-0',
+    data: {
+      breadcrumb: []
+    }
+  }],
+
+  // Function which returns an array of custom contexts
+  // Gets called once per page view / page ping
+  function() {
+    return [{
+      schema: 'iglu:org.schema/WebPage/jsonschema/1-0-0',
+      data: {
+        breadcrumb: ['home','article']
+      }
+    }];
+  }
+);
+            </code></pre>
           </div>
         </article>
       </section>
