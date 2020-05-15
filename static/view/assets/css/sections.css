@@ -1,0 +1,234 @@
+/* ==============
+    HEADER & FOOTER
+=============== */
+
+
+header,footer{
+    background-image: linear-gradient(90deg, #6340B8 0%, #30BEB2 100%);
+    padding:20px 0px;
+}
+header .wrap, header .wrap ul, footer .wrap{
+    display:flex;
+    flex-flow:row wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .wrap ul li{ 
+    margin:0px 20px;
+}
+
+header .logo a, footer .logo a{
+    display:block;
+    height: 60px;
+    width: 240px;
+    background:url(../img/snowplow-logo.svg) no-repeat center center;
+    background-size:100%;
+    text-indent: -9999px;
+    overflow:hidden;
+}
+
+footer{
+    background:#1D2127;
+}
+
+/* ==============
+      MAIN
+=============== */
+
+main{
+    width: 1000px;
+    margin-bottom:60px;
+}
+
+main nav ul{
+    display:flex;
+    flex-flow:row wrap;
+    padding:40px 0px;
+}
+main nav ul li{
+    margin-right:20px;
+}
+
+main section.events-list{
+    padding:40px;
+    box-sizing: border-box;
+}
+
+main section.events-list article h2{
+    margin-bottom:20px;
+}
+
+main section.events-list article p{
+    margin-bottom:30px;
+}
+
+main section.events-list article{
+    margin-bottom:40px;
+}
+main section.events-list article .snowplow-example-short > div{
+    border-radius: 4px;
+    overflow:hidden;
+}
+main section.events-list article button{
+    margin-top:10px;
+    box-shadow: 0 5px 11px 5px rgba(102,102,102,0.06);
+    border-radius: 9px;
+    padding: 13px 40px 15px 20px;
+    background:#6048B8;
+    position:relative;
+}
+main section.events-list article button::after{
+    content: " ";
+    position:absolute;
+    top: -26px;
+    right: -54px;
+    width: 100px;
+    height: 100px;
+    background-size:50%;
+    background: url(../img/Cirle-Arrow-Right.svg) no-repeat;
+}
+article .feedback{
+    margin-left:60px;
+}
+article iframe{
+    background: #FFFFFF !important;
+    box-shadow: 0 5px 11px 5px rgba(102,102,102,0.06) !important;
+    border-radius: 9px !important;
+    border: none !important;
+}
+main section.events-list article button span{
+    color:#ffffff !important;
+    
+}
+main section.events-list article:last-of-type{
+    margin-bottom:0px;
+}
+
+/* ==============
+    ASIDE
+=============== */
+
+aside{
+    padding-top:140px;
+}
+
+
+
+/* ==============
+    POST-CONTENT
+=============== */
+
+.post-content p{
+    margin:10px 0px;
+}
+
+.post-content h1,.post-content h2,.post-content h3,.post-content h4{
+    margin:40px 0px 10px 0px;
+}
+
+.post-content ol{
+    margin:15px 0px;
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+
+.post-content ul{
+    margin:25px 0px;
+}
+
+
+.post-content li:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position:absolute;
+    left:0px;
+    top:8px;
+    background:url(../img/global/list-dot.svg) no-repeat;
+
+}
+
+.post-content li{
+    margin:10px 0px;
+    padding-left:20px;
+    box-sizing: border-box;
+    position:relative;
+}
+
+.post-content li ol, .post-content li ul{
+    margin-left:20px;
+}
+
+.post-content img{
+    margin:15px 0px;
+}
+.post-content table{
+    margin:30px 0px;
+}
+
+.post-content th{
+    background: #F5F7FF;
+}
+
+.post-content th, .post-content td{
+    padding: 15px 20px;
+    border: 1px solid #eae9e9;
+    border-radius: 4px;
+}
+.post-content td{
+    padding: 10px 20px;
+}
+
+
+.post-content figure{
+    margin:20px 0px;
+}
+
+.post-content a:hover{
+    opacity:.8;
+}
+
+.post-content .full .main-cta-bg{
+    color:#fff !important;
+}
+
+.post-content blockquote{
+    background: url('../img/global/quote.svg') no-repeat left center;
+    margin:20px 0px;
+    padding-left:85px;
+}
+
+.post-content blockquote p{
+    font-family:'karla-italic';
+    font-size:20px;
+    line-height:28px; 
+}
+
+.post-content blockquote cite{
+    font-family:'karla-bold';
+    font-size:18px;
+    line-height:25px;
+}
+
+
+
+
+/* ==============
+    DATA
+=============== */
+
+section.data{
+    height: 30vh;
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    z-index:3;
+    width: 100%;
+    overflow-y:scroll;
+    box-shadow: 0 -5px 11px 5px rgba(102,102,102,0.09);
+}
+
+section.data .stats h4, section.data .stats p{
+    color:#ffffff;
+}
