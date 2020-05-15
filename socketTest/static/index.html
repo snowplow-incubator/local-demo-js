@@ -1,0 +1,87 @@
+<html>
+  <link rel="stylesheet" type="text/css" href="viewer.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,900;1,700&display=swap"
+    rel="stylesheet"
+  />
+  <script src="/socket.io/socket.io.js"></script>
+  <title>Viewer</title>
+  <body>
+    <header>
+      <h1>Data Viewer</h1>
+    </header>
+
+    <h2>Pageviews</h2>
+    <p>
+      Page views are tracked using the trackPageView method. This is generally
+      part of the first Snowplow tag to fire on a particular web page. As a
+      result, the trackPageView method is usually deployed straight after the
+      tag that also invokes the Snowplow JavaScript (sp.js) e.g.
+    </p>
+    <div class="snowplow-example">
+      <pre><code>&lt;script type="text/javascript">
+;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://d1fc8wv8zag5ca.cloudfront.net/2.10.2/sp.js","plow"));
+
+window.plow('newTracker', 'sp', 'localhost:9090', {
+    appId: 'my-app-id',
+    contexts: {
+        webPage: true
+    }
+});
+
+window.plow('trackPageView');
+ &lt;/script>
+asdasdasd
+&lt;button onclick="javascript:window.plow('trackPageView');">sadasdasdasd&lt;/button></code></pre>
+    </div>
+    <p>
+      Page views are tracked using the trackPageView method. This is generally
+      part of the first Snowplow tag to fire on a particular web page. As a
+      result, the trackPageView method is usually deployed straight after the
+      tag that also invokes the Snowplow JavaScript (sp.js) e.g.
+    </p>
+    <div class="snowplow-example-short">
+      <pre><code> Snowplow.getTrackerUrl('localhost:9090').trackPageView() </code></pre>
+    </div>
+    <p>
+      Page views are tracked using the trackPageView method. This is generally
+      part of the first Snowplow tag to fire on a particular web page. As a
+      result, the trackPageView method is usually deployed straight after the
+      tag that also invokes the Snowplow JavaScript (sp.js) e.g.
+    </p>
+    <div class="snowplow-example-short">
+      <pre><code> Snowplow.getTrackerUrl('localhost:9090').trackPageView() </code></pre>
+    </div>
+    <div class="container">
+      <div class="stats">
+        <div>
+          Total
+          <div class="total"></div>
+        </div>
+        <div>
+          Good
+          <div class="good"></div>
+        </div>
+        <div>
+          Bad
+          <div class="bad"></div>
+        </div>
+      </div>
+      <table class="good">
+        <thead>
+          <tr>
+            <td>Time</td>
+            <td>Data</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+  <script type="text/javascript" src="jsonview.js"></script>
+  <script type="text/javascript" src="viewer.js"></script>
+  <script type="text/javascript" src="js-editor/app.js"></script>
+</html>

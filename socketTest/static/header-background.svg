@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="120" width="1440" viewBox="0 0 1440 120">
+    <defs>
+        <linearGradient id="b" x1="5.694%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="#402176"/>
+            <stop offset="100%" stop-color="#6638B8"/>
+        </linearGradient>
+        <path id="a" d="M0 0h1440v120H0z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="c" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="url(#b)" xlink:href="#a"/>
+        <g fill-rule="nonzero" stroke="#552E9C" mask="url(#c)">
+            <path d="M65 91L25 21h80zM705 91l-40-70h80zM625 91l-40-70h80zM665 161l-40-70h80zM665 21l-40-70h80zM585 21l-40-70h80zM785 91l-40-70h80zM745 161l-40-70h80zM745 21l-40-70h80zM825 21l-40-70h80zM825 161l-40-70h80zM865 91l-40-70h80zM905 21l-40-70h80zM-15 91l-40-70h80zM25 161l-40-70h80zM25 21l-40-70h80zM145 91l-40-70h80zM105 161L65 91h80zM105 21L65-49h80zM185 21l-40-70h80zM185 161l-40-70h80zM225 91l-40-70h80zM305 91l-40-70h80zM385 91l-40-70h80zM465 91l-40-70h80zM425 21l-40-70h80zM425 161l-40-70h80zM545 91l-40-70h80zM505 21l-40-70h80zM505 161l-40-70h80zM585 161l-40-70h80zM265 21l-40-70h80zM345 21l-40-70h80zM345 161l-40-70h80zM265 161l-40-70h80z"/>
+        </g>
+    </g>
+</svg>

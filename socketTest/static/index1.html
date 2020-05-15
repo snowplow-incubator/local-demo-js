@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+    hello world.
+    <form action="/publish" method="post">
+        <input type="submit" value="send a notification"></input>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect('/');
+      socket.on('snowplowEvent', function (data) {
+        console.log(data);
+      });
+    </script>
+</body>
+</html>

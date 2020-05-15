@@ -24,6 +24,7 @@
   "dependencies": {
     "aws-kcl": "^2.1.0",
     "aws-sdk": "^2.676.0",
+    "express": "^4.17.1",
     "http-server": "^0.12.3",
     "shelljs": "^0.8.4",
     "snowplow-analytics-sdk": "^0.3.0",
