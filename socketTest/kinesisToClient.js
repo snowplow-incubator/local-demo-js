@@ -35,10 +35,14 @@ app.use("/", express.static("static"));
 io.on("connect", () => {
   console.log("got a connection");
 });
+
+/*
 setInterval(
   () => io.sockets.emit("snowplowEvent", { id: new Date().getTime() }),
   1000
 );
+*/
+
 
 function getData(shIterator) {
   getRecordsParams = { ShardIterator: shIterator };

@@ -9,9 +9,9 @@
   var socket = io.connect("/");
   socket.on("snowplowEvent", (event) => {
     const element = document.createElement("tr");
-    element.innerHTML = `<td>${event.id}</td><td class="data"></td>`;
+    element.innerHTML = `<td>${event.collector_tstamp}</td><td class="data"></td>`;
 
-    element.classList.add(`row-${event.id}`);
+    element.classList.add(`row-${event.event_id}`);
 
     if (goodTBodyElement.firstChild) {
       goodTBodyElement.insertBefore(element, goodTBodyElement.firstChild);
@@ -19,7 +19,7 @@
       goodTBodyElement.appendChild(element);
     }
 
-    jsonView.format(event, `.row-${event.id} .data`);
+    jsonView.format(event, `.row-${event.event_id} .data`);
     total++;
     good++;
     totalElement.innerHTML = total.toString();
