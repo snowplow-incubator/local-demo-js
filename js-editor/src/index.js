@@ -107,6 +107,7 @@ function stopRunner([_container, shutdownCb]) {
 
 function stopAllRunners() {
   runners.forEach(stopRunner);
+  return window.clearData()
 }
 
 function createBottomBar(button) {
@@ -217,8 +218,8 @@ function init() {
         automaticLayout: false,
       });
 
-      const cb = () => {
-        stopAllRunners();
+      const cb = async () => {
+        await stopAllRunners();
         const v =
           initShortFrame(i) +
           "<script>try {" +
@@ -301,11 +302,11 @@ function init() {
         automaticLayout: false,
       });
 
-      const cb = () => {
+      const cb = async () => {
         if (viewing) {
           switchOff();
         } else {
-          stopAllRunners();
+          await stopAllRunners();
           switchOn();
         }
         rerender();
