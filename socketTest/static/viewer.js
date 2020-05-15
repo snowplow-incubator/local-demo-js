@@ -3,7 +3,9 @@
   const totalElement = document.querySelector(".total");
   const goodTotalElement = document.querySelector(".good");
   const badTotalElement = document.querySelector(".bad");
-
+  let total = 0;
+  let good = 0;
+  let bad = 0;
   var socket = io.connect("/");
   socket.on("snowplowEvent", (event) => {
     const element = document.createElement("tr");
@@ -16,6 +18,11 @@
     } else {
       goodTBodyElement.appendChild(element);
     }
+
     jsonView.format(event, `.row-${event.id} .data`);
+    total++;
+    good++;
+    totalElement.innerHTML = total.toString();
+    goodTotalElement.innerHTML = good.toString();
   });
 })();
