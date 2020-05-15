@@ -18,17 +18,6 @@ server.listen(1080, function () {
   console.log("listening on http://localhost:1080");
 });
 
-// function handler(req, res) {
-//   if (req.url === "/") {
-//     return fs.createReadStream(__dirname + "/index.html").pipe(res);
-//   }
-//   if (req.url === "/publish" && req.method === "POST") {
-//     res.writeHead(200, {
-//       Location: "/",
-//     });
-//     return res.end("");
-//   }
-// }
 
 app.use("/", express.static("static"));
 
